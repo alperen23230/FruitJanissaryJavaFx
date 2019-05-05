@@ -19,6 +19,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -51,18 +52,29 @@ public class RegisterController implements Initializable {
         connection = ConnectionUtil.connectionDB();
     }
 
-    public void registerClicked(ActionEvent event) throws InvalidKeySpecException, NoSuchAlgorithmException, IOException {
+    public void registerClicked(ActionEvent event) throws InvalidKeySpecException, NoSuchAlgorithmException, IOException, SQLException {
         String name = nameField.getText();
         String surname = surnameField.getText();
         String username = usernameField.getText();
         String email = emailField.getText();
         String password = passwordField.getText();
         String confirmPass = confirmPassField.getText();
+        boolean isUsernameUnique = true;
 
+        //For mail checker
         String regex = "((\\w)+@(([a-zA-Z])+\\.)+(com))";
-
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
+
+        //For is username checker
+        String sql = "Select * from player where UserName = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1,username);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()){
+            isUsernameUnique = false;
+        }
 
 
         if(name.isEmpty() || surname.isEmpty() || username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPass.isEmpty() ){
@@ -75,7 +87,12 @@ public class RegisterController implements Initializable {
                 alert.setContentText("Password and confirm password must be the same!");
                 alert.show();
             }
-            else if(matcher.matches()) {
+            else if(!isUsernameUnique) {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Username is not unique");
+                alert.show();
+
+            }else if (matcher.matches()){
                 String hashedPassword = PasswordHash.generateStrongPasswordHash(password);
                 register(name,surname,username,email,hashedPassword);
                 Parent parent = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -84,7 +101,8 @@ public class RegisterController implements Initializable {
                 Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 window.setScene(scene);
                 window.show();
-            }else {
+
+            } else {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Please enter a valid email address!");
                 alert.show();

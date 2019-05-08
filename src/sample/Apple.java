@@ -15,6 +15,6 @@ public class Apple extends Fruit {
 
     @Override
     public void slice(double angle) {
-        MainGameSceneController.createSemiBalls(0,  this.getCenterX()+10, this.getCenterY()+10, angle,"file:FruitImages/halfApple1.png","file:FruitImages/halfApple2.png");
+        MainGameSceneController.createSemiBalls(0,  this.getCenterX()+10, this.getCenterY()+10, angle,"file:FruitImages/halfApple2.png","file:FruitImages/halfApple1.png");
     }
 }

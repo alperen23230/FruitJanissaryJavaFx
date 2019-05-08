@@ -79,9 +79,10 @@ public class MainGameSceneController implements Initializable {
                     createBalls( RADIUS, SPEED, 150+Math.random()*500, 600);
 
                     //making game harder
-                    if(score<30){delay+=50;}
-                    else if(score>=30 && score<60){delay+=40;}
-                    else {delay +=20;}
+                    if(score<20){delay+=50;}
+                    else if(score>=20 && score<50){delay+=40;}
+                    else if(score>=50 && score<70){delay +=30;}
+                    else { delay += 20;}
                 }
                 //Removing semiballs
                 for (int i = 0; i < fruits.size(); i++) {
@@ -92,12 +93,7 @@ public class MainGameSceneController implements Initializable {
                     }}
                 if(fail>3){
                     //game over method
-                    fail = 0;
-                    score = 0;
-                    fruits.removeAll();
-                    semifruits.removeAll();
-                    System.out.println("game over");
-                    this.stop();
+
                     Parent p = null;
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("EndGame.fxml"));
                     try {
@@ -108,10 +104,19 @@ public class MainGameSceneController implements Initializable {
                         e.printStackTrace();
                     }
                     Scene scene = new Scene(p);
+                    EndGameController controller = loader.getController();
+                    controller.setScoreLbl(score);
                     stage2 = new Stage();
                     stage2.setScene(scene);
                     stage2.show();
                     stage1.close();
+
+                    fail = 0;
+                    score = 0;
+                    fruits.removeAll();
+                    semifruits.removeAll();
+                    System.out.println("game over");
+                    this.stop();
 
                 }
             }
@@ -159,12 +164,7 @@ public class MainGameSceneController implements Initializable {
                                 } else {
                                     fruits.get(i).slice(angle);
                                     System.out.println("game over");
-                                    fail = 0;
-                                    score = 0;
-                                    fruits.removeAll();
-                                    semifruits.removeAll();
-                                    System.out.println("game over");
-                                    animationTimer.stop();
+
                                     Parent p = null;
                                     FXMLLoader loader = new FXMLLoader(getClass().getResource("EndGame.fxml"));
                                     try {
@@ -175,10 +175,19 @@ public class MainGameSceneController implements Initializable {
                                         e.printStackTrace();
                                     }
                                     Scene scene = new Scene(p);
+                                    EndGameController controller = loader.getController();
+                                    controller.setScoreLbl(score);
                                     stage2 = new Stage();
                                     stage2.setScene(scene);
                                     stage2.show();
                                     stage1.close();
+
+                                    fail = 0;
+                                    score = 0;
+                                    fruits.removeAll();
+                                    semifruits.removeAll();
+                                    System.out.println("game over");
+                                    animationTimer.stop();
                                 }
                                 fruits.remove(fruits.get(i));
                             }}

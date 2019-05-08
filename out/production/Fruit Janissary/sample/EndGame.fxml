@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.EndGameController">
    <children>
       <Button layoutX="263.0" layoutY="206.0" mnemonicParsing="false" onAction="#playAgain" prefHeight="25.0" prefWidth="77.0" text="Play Again" />
       <Button layoutX="263.0" layoutY="258.0" mnemonicParsing="false" text="Main Menu" />
+      <Label layoutX="248.0" layoutY="125.0" text="Score:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="scoreLbl" layoutX="312.0" layoutY="130.0" text="Label">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

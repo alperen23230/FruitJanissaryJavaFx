@@ -13,7 +13,7 @@ public class Orange extends Fruit {
 
     @Override
     public void slice(double angle) {
-        MainGameSceneController.createSemiBalls(0,  this.getCenterX()+10, this.getCenterY()+10, angle,"file:FruitImages/halfOrange1.png","file:FruitImages/halfOrange2.png");
+        Game.createSemiBalls(0,  this.getCenterX()+10, this.getCenterY()+10, angle,"file:FruitImages/halfOrange1.png","file:FruitImages/halfOrange2.png");
 
     }
 }

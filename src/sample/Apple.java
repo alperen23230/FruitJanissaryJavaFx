@@ -7,6 +7,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 public class Apple extends Fruit {
+
     public Apple(double centerX, double centerY, double mradius, double xVelocity, double yVelocity) {
 
         super(centerX, centerY, mradius, xVelocity, yVelocity);
@@ -15,6 +16,6 @@ public class Apple extends Fruit {
 
     @Override
     public void slice(double angle) {
-        MainGameSceneController.createSemiBalls(0,  this.getCenterX()+10, this.getCenterY()+10, angle,"file:FruitImages/halfApple2.png","file:FruitImages/halfApple1.png");
+        Game.createSemiBalls(0,  this.getCenterX()+10, this.getCenterY()+10, angle,"file:FruitImages/halfApple2.png","file:FruitImages/halfApple1.png");
     }
 }

@@ -31,6 +31,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static java.lang.Math.PI;
 import static java.lang.Math.cos;
@@ -48,7 +50,9 @@ public class MainGameSceneController implements Initializable {
     //variable for making game harder more and more
     public double delay = 50.0;
     public double angle;
+    public static int duration = 0;
 
+    Timer timer;
     Stage stage1;
     Stage stage2;
 
@@ -59,9 +63,19 @@ public class MainGameSceneController implements Initializable {
     @FXML
     Button button;
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                duration++;
+                //System.out.println(duration);
+            }
+        };
+        timer.schedule(timerTask,0,1000);
         Pane ballContainer = new Pane();
 
        BackgroundImage myBI= new BackgroundImage(new Image("file:FruitImages/background.jpg",800,600,false,true),
@@ -72,7 +86,6 @@ public class MainGameSceneController implements Initializable {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-
                 //creates fruits or bombs every specific time
                 if(frameStats.getFrameCount()%100000000==delay  ) {
 
@@ -113,6 +126,7 @@ public class MainGameSceneController implements Initializable {
 
                     fail = 0;
                     score = 0;
+                    duration = 0;
                     fruits.removeAll();
                     semifruits.removeAll();
                     System.out.println("game over");
@@ -184,6 +198,7 @@ public class MainGameSceneController implements Initializable {
 
                                     fail = 0;
                                     score = 0;
+                                    duration = 0;
                                     fruits.removeAll();
                                     semifruits.removeAll();
                                     System.out.println("game over");
@@ -341,7 +356,7 @@ public class MainGameSceneController implements Initializable {
 
 
         int random = rng.nextInt(5);
-        System.out.println(random);
+
 
         switch (random){
 
@@ -451,7 +466,7 @@ public class MainGameSceneController implements Initializable {
 
         @Override
         public String toString() {
-            return String.format("SCORE: %d, FAIL: %d",score, fail);
+            return String.format("SCORE: %d, FAIL: %d, Duration: %d",score, fail, duration);
 
             //return String.format("Frame count: %,d Average frame interval: %.3f milliseconds Score: %d, Fail: %d", getFrameCount(), getMeanFrameInterval(), score, fail);
         }

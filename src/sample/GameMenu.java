@@ -19,11 +19,11 @@ public class GameMenu implements Initializable {
     @FXML
     private Label usernameLabel;
 
-    private String loggedInUsername;
+    private static String loggedInUsername;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        usernameLabel.setText("Welcome to Fruit Janissary " + loggedInUsername);
     }
 
     public void initData(String username){
@@ -44,6 +44,7 @@ public class GameMenu implements Initializable {
         Parent parent = FXMLLoader.load(getClass().getResource("MainGameScene.fxml"));
         Scene scene = new Scene(parent);
 
+        Game.initData(loggedInUsername);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.close();

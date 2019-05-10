@@ -14,6 +14,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -43,12 +44,17 @@ public class Game {
     public double delay = 50.0;
     public double angle;
     public static int duration = 0;
+    private static String loggedInUsername;
+    private boolean isStop = false;
+    //private ImageView bombEffect = new ImageView("file:FruitImages/bombEffect.gif");
 
     Timer timer;
     Stage stage1;
     TimerTask timerTask;
     AnimationTimer animationTimer;
      AnimationTimer worldTimer;
+
+
     //Stage stage2;
 
     //Create instance of Frame Stats
@@ -93,7 +99,6 @@ public class Game {
                     }}
                 if(fail>3){
                     gameOver();
-
                 }
             }
 
@@ -138,8 +143,7 @@ public class Game {
                                     score+=2;
                                     createSlashTrace(fruits.get(i).getCenterX(), fruits.get(i).getCenterY(), angle, ballContainer );
                                 } else {
-                                    fruits.get(i).slice(angle);
-                                    gameOver();
+                                   gameOverBomb(fruits.get(i).getCenterX(), fruits.get(i).getCenterY(),ballContainer);
                                 }
                                 fruits.remove(fruits.get(i));
                             }}
@@ -186,6 +190,8 @@ public class Game {
         final Label stats = new Label();
         stats.textProperty().bind(frameStats.textProperty());
 
+
+
         root.setCenter(ballContainer);
         root.setBottom(stats);
 
@@ -197,23 +203,41 @@ public class Game {
         stage1.show();
         startAnimation(ballContainer);
     }
+    public static void initData(String username){
+        loggedInUsername = username;
+    }
+
+    public void gameOverBomb(double initialX, double initialY, Pane pane){
+        Timeline showSlash = new Timeline(
+                new KeyFrame(Duration.ZERO, e ->
+                {
+                    createBombEffect(initialX,initialY,pane);
+                    stopGame();
+                }
+                ),
+                new KeyFrame(Duration.millis(1000), e->
+                {
+                    gameOver();
+                }
+                )
+        );
+        showSlash.setCycleCount(1);
+        showSlash.play();
+    }
 
     public void gameOver(){
+        animationTimer.stop();
         Parent p = null;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("EndGame.fxml"));
         try {
             p = loader.load();
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
         Scene scene = new Scene(p);
         EndGameController controller = loader.getController();
-        controller.setScoreLbl(score);
-                                    /*stage2 = new Stage();
-                                    stage2.setScene(scene);
-                                    stage2.show();*/
+        controller.initData(score, duration,loggedInUsername);
+
         stage1.setScene(scene);
 
         fail = 0;
@@ -221,13 +245,51 @@ public class Game {
         duration = 0;
         fruits.removeAll();
         semifruits.removeAll();
-        System.out.println("game over");
-        animationTimer.stop();
         timerTask.cancel();
         worldTimer.stop();
     }
 
 
+    public void stopGame(){
+        timerTask.cancel();
+        animationTimer.stop();
+        worldTimer.stop();
+    }
+
+    public void createBombEffect(double initialX, double initialY, Pane pane){
+        // Define the slash image and create the object for it
+        ImageView bombEffect = new ImageView("file:FruitImages/bombEffect.gif");
+
+        bombEffect.setFitWidth(150);
+        bombEffect.setFitHeight(150);
+
+        // Firstly make the slash invisible
+        bombEffect.setVisible(false);
+
+        // Tie the trace with our full watermelon layout x, y
+        bombEffect.setLayoutX(initialX);
+        bombEffect.setLayoutY(initialY);
+
+        // Add the trace to the pane
+        pane.getChildren().add(bombEffect);
+
+        // Make animation to show the trace just for 400 millisecond
+        Timeline showEffect = new Timeline(
+                new KeyFrame(Duration.ZERO, e ->
+                {
+                    bombEffect.setVisible(true);
+                }
+                ),
+                new KeyFrame(Duration.millis(1000), e->
+                {
+                    bombEffect.setVisible(false);
+                }
+                )
+        );
+
+        showEffect.setCycleCount(1);
+        showEffect.play();
+    }
 
     public void createSlashTrace(double initalX, double initalY, double angle1, Pane pane )
     {

@@ -2,25 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Apple.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Apple.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Lemon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Lemon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/MainGameSceneController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/MainGameSceneController$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/MainGameSceneController$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/MainGameSceneController$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/MainGameSceneController$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/MainGameSceneController$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/MainGameSceneController$FrameStats.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/MainGameSceneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/MainGameSceneController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Orange.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Orange.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Watermelon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Watermelon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Apple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Apple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Lemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Lemon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/EndGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/EndGame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/EndGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/EndGameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Game$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Game$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Game$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Game$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Game$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Game$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Game$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Game$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Game$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Game$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Game$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Game$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Game$FrameStats.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Game$FrameStats.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/GameMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fruit Janissary/sample/GameMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/EndGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/EndGame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/EndGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/EndGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GameMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GameMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/MainGameSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MainGameSceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Orange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Orange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Watermelon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Watermelon.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -94,11 +92,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/Game.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="214" column="31" selection-start-line="214" selection-start-column="31" selection-end-line="214" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#9720#9721#0" expanded="true" />
+                <element signature="e#9763#9764#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/MainGameSceneController.java">
+        <entry file="file://$PROJECT_DIR$/FruitImages/bombEffect.gif">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Bomb.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="49" column="44" lean-forward="true" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1752#1753#0" expanded="true" />
+                <element signature="e#1803#1804#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Apple.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+              <caret line="12" column="63" lean-forward="true" selection-start-line="12" selection-start-column="63" selection-end-line="13" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -109,7 +140,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/HalfFruit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-311">
+            <state relative-caret-position="22">
               <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -119,84 +150,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Apple.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/HalfApple.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="18" column="12" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="12" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="51">
+              <caret line="3" column="106" selection-start-line="3" selection-start-column="106" selection-end-line="3" selection-end-column="106" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Bomb.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/RegisterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-289">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="110">
+              <caret line="113" column="109" selection-start-line="113" selection-start-column="21" selection-end-line="113" selection-end-column="109" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Lemon.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Orange.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/Watermelon.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Game.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="345" column="17" selection-start-line="345" selection-start-column="17" selection-end-line="345" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1834#1957#0" expanded="true" />
-                <element signature="e#1956#1957#0" expanded="true" />
-                <element signature="e#11449#11854#0" expanded="true" />
-                <element signature="e#11853#11854#0" expanded="true" />
-                <element signature="e#8031#8032#0" expanded="true" />
-                <element signature="e#8072#8073#0" expanded="true" />
-                <element signature="e#8119#8120#0" expanded="true" />
-                <element signature="e#8167#8168#0" expanded="true" />
-                <element signature="e#8451#8452#0" expanded="true" />
-                <element signature="e#8492#8493#0" expanded="true" />
-                <element signature="e#8548#8549#0" expanded="true" />
-                <element signature="e#8606#8607#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -205,8 +173,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/GameMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+            <state relative-caret-position="221">
+              <caret line="25" column="80" selection-start-line="25" selection-start-column="80" selection-end-line="25" selection-end-column="80" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -217,8 +185,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="74" column="46" selection-start-line="74" selection-start-column="46" selection-end-line="74" selection-end-column="46" />
+            <state relative-caret-position="476">
+              <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -242,6 +210,10 @@
       <find>createSem</find>
       <find>System</find>
       <find>semifruits</find>
+      <find>ini</find>
+      <find>gameOver</find>
+      <find>createSlash</find>
+      <find>createSlas</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -271,17 +243,17 @@
         <option value="$PROJECT_DIR$/src/sample/HalfWatermelon.java" />
         <option value="$PROJECT_DIR$/src/sample/HalfLemon.java" />
         <option value="$PROJECT_DIR$/src/sample/MainGameScene.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/Bomb.java" />
         <option value="$PROJECT_DIR$/src/sample/EndGame.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/GameMenu.java" />
-        <option value="$PROJECT_DIR$/src/sample/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/sample/EndGameController.java" />
-        <option value="$PROJECT_DIR$/src/sample/MainGameSceneController.java" />
-        <option value="$PROJECT_DIR$/src/sample/Game.java" />
         <option value="$PROJECT_DIR$/src/sample/Apple.java" />
         <option value="$PROJECT_DIR$/src/sample/Lemon.java" />
         <option value="$PROJECT_DIR$/src/sample/Orange.java" />
         <option value="$PROJECT_DIR$/src/sample/Watermelon.java" />
+        <option value="$PROJECT_DIR$/src/sample/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/sample/MainGameSceneController.java" />
+        <option value="$PROJECT_DIR$/src/sample/GameMenu.java" />
+        <option value="$PROJECT_DIR$/src/sample/EndGameController.java" />
+        <option value="$PROJECT_DIR$/src/sample/Bomb.java" />
+        <option value="$PROJECT_DIR$/src/sample/Game.java" />
       </list>
     </option>
   </component>
@@ -301,7 +273,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -333,6 +304,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -478,16 +450,18 @@
       <workItem from="1557349615576" duration="206000" />
       <workItem from="1557436437116" duration="158000" />
       <workItem from="1557436732322" duration="2608000" />
+      <workItem from="1557490988907" duration="6006000" />
+      <workItem from="1557497190298" duration="4949000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49100000" />
+    <option name="totallyTimeSpent" value="60055000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1293" height="693" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.21214575" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.21862349" />
       <window_info id="Structure" order="1" weight="0.24939272" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -496,7 +470,7 @@
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.22912966" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.06749556" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -507,7 +481,7 @@
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" />
-      <window_info anchor="bottom" id="Messages" order="13" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.3285968" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="15" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="16" />
@@ -558,12 +532,12 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Register.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
           <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/PasswordHash.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -575,29 +549,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/GameMenu.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -624,31 +580,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HalfApple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="106" selection-start-line="3" selection-start-column="106" selection-end-line="3" selection-end-column="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/RegisterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/MainGameScene.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/FruitImages/apple.png">
       <provider selected="true" editor-type-id="images" />
@@ -695,111 +626,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FruitImages/slash_trace.gif">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/FruitImages/halfOrange2.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/EndGame.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/EndGameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GameMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="74" column="46" selection-start-line="74" selection-start-column="46" selection-end-line="74" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Bomb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-289">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/MainGameSceneController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HalfFruit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-311">
-          <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="345" column="17" selection-start-line="345" selection-start-column="17" selection-end-line="345" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1834#1957#0" expanded="true" />
-            <element signature="e#1956#1957#0" expanded="true" />
-            <element signature="e#11449#11854#0" expanded="true" />
-            <element signature="e#11853#11854#0" expanded="true" />
-            <element signature="e#8031#8032#0" expanded="true" />
-            <element signature="e#8072#8073#0" expanded="true" />
-            <element signature="e#8119#8120#0" expanded="true" />
-            <element signature="e#8167#8168#0" expanded="true" />
-            <element signature="e#8451#8452#0" expanded="true" />
-            <element signature="e#8492#8493#0" expanded="true" />
-            <element signature="e#8548#8549#0" expanded="true" />
-            <element signature="e#8606#8607#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Apple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="12" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Lemon.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -821,12 +649,153 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/MainGameSceneController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="63" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Watermelon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="221">
           <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/MainGameScene.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/EndGameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="47" column="76" selection-start-line="47" selection-start-column="76" selection-end-line="47" selection-end-column="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/EndGame.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="14" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GameMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="25" column="80" selection-start-line="25" selection-start-column="80" selection-end-line="25" selection-end-column="80" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HalfApple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="106" selection-start-line="3" selection-start-column="106" selection-end-line="3" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HalfFruit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Apple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="63" lean-forward="true" selection-start-line="12" selection-start-column="63" selection-end-line="13" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FruitImages/slash_trace.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Bomb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="49" column="44" lean-forward="true" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1752#1753#0" expanded="true" />
+            <element signature="e#1803#1804#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/RegisterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="113" column="109" selection-start-line="113" selection-start-column="21" selection-end-line="113" selection-end-column="109" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FruitImages/bombEffect.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="214" column="31" selection-start-line="214" selection-start-column="31" selection-end-line="214" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9720#9721#0" expanded="true" />
+            <element signature="e#9763#9764#0" expanded="true" />
           </folding>
         </state>
       </provider>

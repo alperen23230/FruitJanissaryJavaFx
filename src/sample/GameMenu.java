@@ -49,4 +49,31 @@ public class GameMenu implements Initializable {
         window.setScene(scene);
         window.close();
     }
+    public void goToProfile(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Profile.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+
+        ProfileController profileController = loader.getController();
+        profileController.initData(loggedInUsername);
+
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
+    public void goToLeaderboard(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Leaderboard.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+
+        LeaderboardController leaderboardController = loader.getController();
+        leaderboardController.initData(loggedInUsername);
+
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
+
 }

@@ -125,6 +125,15 @@ public class RegisterController implements Initializable {
             e.printStackTrace();
         }
     }
+    public void goBackToLogin(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Scene scene = new Scene(parent);
+
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
+
 
 
 }

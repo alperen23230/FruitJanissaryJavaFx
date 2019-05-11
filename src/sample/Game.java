@@ -69,7 +69,26 @@ public class Game {
             }
         };
         timer.schedule(timerTask,0,1000);
+
+        Button stopButton = new Button("Stop");
+        stopButton.setLayoutX(10);
+        stopButton.setLayoutY(550);
+
         Pane ballContainer = new Pane();
+        ballContainer.getChildren().add(stopButton);
+        stopButton.addEventHandler(MouseEvent.MOUSE_CLICKED,event -> {
+            if(isStop == false){
+                isStop = true;
+                timerTask.cancel();
+                animationTimer.stop();
+                worldTimer.stop();
+            } else {
+                isStop = false;
+                timerTask.run();
+                animationTimer.start();
+                worldTimer.start();
+            }
+        });
 
         BackgroundImage myBI= new BackgroundImage(new Image("file:FruitImages/background.jpg",800,600,false,true),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
@@ -199,6 +218,7 @@ public class Game {
         /*primaryStage.setScene(scene);
         primaryStage.show();*/
         stage1 = new Stage();
+        stage1.setResizable(false);
         stage1.setScene(scene);
         stage1.show();
         startAnimation(ballContainer);

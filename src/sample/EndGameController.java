@@ -68,6 +68,7 @@ public class EndGameController implements Initializable {
         while (resultSet.next()){
             loggedInPlayerId = resultSet.getInt("Id");
         }
+        System.out.println(loggedInPlayerId);
         String query = "INSERT INTO game (PlayerId, Score, GameDuration) VALUES (?,?,?)";
         preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1,loggedInPlayerId);

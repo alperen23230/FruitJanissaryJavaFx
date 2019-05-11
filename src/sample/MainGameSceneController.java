@@ -13,8 +13,4 @@ public class MainGameSceneController implements Initializable {
             game.gameStart();
     }
 
-
-
-
-
 }

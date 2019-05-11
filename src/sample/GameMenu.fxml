@@ -17,7 +17,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="260.0" layoutY="231.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="94.0" text="Profile">
+      <Button layoutX="260.0" layoutY="231.0" mnemonicParsing="false" onAction="#goToProfile" prefHeight="42.0" prefWidth="94.0" text="Profile">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -32,7 +32,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="260.0" layoutY="179.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="94.0" text="Leaderboard">
+      <Button layoutX="260.0" layoutY="179.0" mnemonicParsing="false" onAction="#goToLeaderboard" prefHeight="42.0" prefWidth="94.0" text="Leaderboard">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

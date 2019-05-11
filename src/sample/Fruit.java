@@ -47,7 +47,6 @@ public abstract class Fruit implements ISliceable {
 
     }
 
-
     public double getGravity() {
         return gravity;
     }

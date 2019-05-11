@@ -28,5 +28,10 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
+      <Label layoutX="239.0" layoutY="34.0" text="Fruit Janissary">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

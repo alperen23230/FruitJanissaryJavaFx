@@ -1,15 +1,14 @@
 package sample;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.ReadOnlyDoubleWrapper;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
+
 
 public class Apple extends Fruit {
 
-    public Apple(double centerX, double centerY, double mradius, double xVelocity, double yVelocity) {
+    public static final int POINT = 10;
 
+    public Apple(double centerX, double centerY, double mradius, double xVelocity, double yVelocity) {
         super(centerX, centerY, mradius, xVelocity, yVelocity);
         getView().setFill(new ImagePattern(new Image("file:FruitImages/apple.png")));
     }

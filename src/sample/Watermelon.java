@@ -4,6 +4,8 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 
 public class Watermelon extends Fruit {
+    public static final int POINT = 8;
+
     public Watermelon(double centerX, double centerY, double mradius, double xVelocity, double yVelocity) {
 
         super(centerX, centerY, mradius, xVelocity, yVelocity);

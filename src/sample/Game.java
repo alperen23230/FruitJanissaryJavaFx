@@ -46,16 +46,13 @@ public class Game {
     public static int duration = 0;
     private static String loggedInUsername;
     private boolean isStop = false;
-    //private ImageView bombEffect = new ImageView("file:FruitImages/bombEffect.gif");
 
     Timer timer;
     Stage stage1;
     TimerTask timerTask;
     AnimationTimer animationTimer;
-     AnimationTimer worldTimer;
+    AnimationTimer worldTimer;
 
-
-    //Stage stage2;
 
     //Create instance of Frame Stats
     private final FrameStats frameStats = new FrameStats() ;
@@ -70,24 +67,33 @@ public class Game {
         };
         timer.schedule(timerTask,0,1000);
 
-        Button stopButton = new Button("Stop");
-        stopButton.setLayoutX(10);
-        stopButton.setLayoutY(550);
+        Button pauseButton = new Button("Pause");
+        pauseButton.setLayoutX(10);
+        pauseButton.setLayoutY(550);
+
+        Button exitButton = new Button("Exit");
+        exitButton.setLayoutX(70);
+        exitButton.setLayoutY(550);
 
         Pane ballContainer = new Pane();
-        ballContainer.getChildren().add(stopButton);
-        stopButton.addEventHandler(MouseEvent.MOUSE_CLICKED,event -> {
+        ballContainer.getChildren().addAll(pauseButton, exitButton);
+
+        pauseButton.addEventHandler(MouseEvent.MOUSE_CLICKED,event -> {
             if(isStop == false){
                 isStop = true;
-                timerTask.cancel();
-                animationTimer.stop();
-                worldTimer.stop();
+                stopGame();
+                pauseButton.setText("Resume");
             } else {
                 isStop = false;
                 timerTask.run();
                 animationTimer.start();
                 worldTimer.start();
+                pauseButton.setText("Pause");
             }
+        });
+
+        exitButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            gameExit();
         });
 
         BackgroundImage myBI= new BackgroundImage(new Image("file:FruitImages/background.jpg",800,600,false,true),
@@ -104,9 +110,9 @@ public class Game {
                     createBalls( RADIUS, SPEED, 150+Math.random()*500, 600);
 
                     //making game harder
-                    if(score<20){delay+=50;}
-                    else if(score>=20 && score<50){delay+=40;}
-                    else if(score>=50 && score<70){delay +=30;}
+                    if(score<60){delay+=50;}
+                    else if(score>=60 && score<120){delay+=40;}
+                    else if(score>=120 && score<180){delay +=30;}
                     else { delay += 20;}
                 }
                 //Removing semiballs
@@ -127,10 +133,7 @@ public class Game {
         //this is our mouse event that checks if sliceable object is sliced. We used only entry point to slice a fruit.
         //so blade doesn't have to exit the fruit
         ballContainer.addEventHandler(MouseEvent.MOUSE_DRAGGED,
-                new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-
+                event ->  {
                         for (int i = 0; i < fruits.size(); i++) {
                             //if(Math.sqrt((Math.abs(event.getX()-balls.get(i).getCenterX())*Math.abs(event.getX()-balls.get(i).getCenterX()))+(Math.abs(event.getY()-balls.get(i).getCenterY())*Math.abs(event.getY()-balls.get(i).getCenterY())))<=balls.get(i).getRadius()) {
                             if((Math.abs(fruits.get(i).getCenterX() - event.getX()) <= fruits.get(i).getRadius()) && (Math.abs(fruits.get(i).getCenterY() - event.getY()) <= fruits.get(i).getRadius())) {
@@ -143,38 +146,34 @@ public class Game {
                                 //increasing score by fruits' scores
                                 if(fruits.get(i) instanceof Apple){
                                     fruits.get(i).slice(angle);
-                                    score+=3;
+                                    score+=((Apple) fruits.get(i)).POINT;
                                     createSlashTrace(fruits.get(i).getCenterX(), fruits.get(i).getCenterY(), angle, ballContainer );
                                 }
                                 else if(fruits.get(i) instanceof Orange){
                                     fruits.get(i).slice(angle);
-                                    score+=5;
+                                    score+=((Orange) fruits.get(i)).POINT;
                                     createSlashTrace(fruits.get(i).getCenterX(), fruits.get(i).getCenterY(), angle, ballContainer );
                                 }
                                 else if(fruits.get(i) instanceof Lemon){
                                     fruits.get(i).slice(angle);
-                                    score+=4;
+                                    score+=((Lemon) fruits.get(i)).POINT;
                                     createSlashTrace(fruits.get(i).getCenterX(), fruits.get(i).getCenterY(), angle, ballContainer );
                                 }
                                 else if(fruits.get(i) instanceof Watermelon){
                                     //Watermelon
                                     fruits.get(i).slice(angle);
-                                    score+=2;
+                                    score+=((Watermelon) fruits.get(i)).POINT;
                                     createSlashTrace(fruits.get(i).getCenterX(), fruits.get(i).getCenterY(), angle, ballContainer );
                                 } else {
                                    gameOverBomb(fruits.get(i).getCenterX(), fruits.get(i).getCenterY(),ballContainer);
                                 }
                                 fruits.remove(fruits.get(i));
                             }}
-                    }
-
                 });
 
 
         //if a fruit or bomb is created or vanished, it prints or makes it vanished on screen
-        fruits.addListener(new ListChangeListener<ISliceable>() {
-            @Override
-            public void onChanged(Change<? extends ISliceable> change) {
+        fruits.addListener((ListChangeListener.Change<? extends ISliceable> change) -> {
                 while (change.next()) {
                     for (ISliceable b : change.getAddedSubList()) {
                         ballContainer.getChildren().add(b.getView());
@@ -183,13 +182,10 @@ public class Game {
                         ballContainer.getChildren().remove(b.getView());
                     }
                 }
-            }
         });
 
         //if a sliced fruit (halffruit) is created or vanished, it prints or makes it vanished on screen
-        semifruits.addListener(new ListChangeListener<HalfFruit>() {
-            @Override
-            public void onChanged(Change<? extends HalfFruit> change) {
+        semifruits.addListener((ListChangeListener.Change<? extends HalfFruit> change) ->  {
                 while (change.next()) {
                     for (HalfFruit b : change.getAddedSubList()) {
                         ballContainer.getChildren().add(b.getView());
@@ -198,26 +194,21 @@ public class Game {
                         ballContainer.getChildren().remove(b.getView());
                     }
                 }
-            }
         });
 
         //creates first fruit
         createBalls( RADIUS, SPEED, 400, 600);
 
-
         BorderPane root = new BorderPane();
         final Label stats = new Label();
         stats.textProperty().bind(frameStats.textProperty());
-
-
 
         root.setCenter(ballContainer);
         root.setBottom(stats);
 
         final Scene scene = new Scene(root, 800, 600);
-        /*primaryStage.setScene(scene);
-        primaryStage.show();*/
         stage1 = new Stage();
+        stage1.setTitle("Fruit Janissary");
         stage1.setResizable(false);
         stage1.setScene(scene);
         stage1.show();
@@ -246,7 +237,7 @@ public class Game {
     }
 
     public void gameOver(){
-        animationTimer.stop();
+
         Parent p = null;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("EndGame.fxml"));
         try {
@@ -265,10 +256,26 @@ public class Game {
         duration = 0;
         fruits.removeAll();
         semifruits.removeAll();
-        timerTask.cancel();
-        worldTimer.stop();
+        stopGame();
     }
+    public void gameExit(){
+        Parent p = null;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("GameMenu.fxml"));
+        try {
+            p = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        Scene scene = new Scene(p);
+        stage1.setScene(scene);
+        fail = 0;
+        score = 0;
+        duration = 0;
+        fruits.removeAll();
+        semifruits.removeAll();
+        stopGame();
+    }
 
     public void stopGame(){
         timerTask.cancel();
@@ -313,7 +320,6 @@ public class Game {
 
     public void createSlashTrace(double initalX, double initalY, double angle1, Pane pane )
     {
-
         // Get angle of incline with +ve X axis
         double angle = angle1;
 
@@ -367,8 +373,6 @@ public class Game {
                 }
                 lastUpdateTime.set(timestamp);
             }
-
-
         };
         worldTimer.start();
     }
@@ -376,17 +380,17 @@ public class Game {
     //this is the part where fruits and semifruits move (translate) by gravity
     private void updateWorld(long elapsedTime) {
         double elapsedSeconds = elapsedTime / 1_000_000_000.0;
-        double zorluk = 4.6;
+        double difficulty = 4.6;
 
         for (HalfFruit b : semifruits) {
             b.setCenterX(b.getCenterX() + elapsedSeconds * b.getXVelocity());
-            b.setCenterY((b.getCenterY() + elapsedSeconds * b.getYVelocity()) - zorluk * b.getGravity());
+            b.setCenterY((b.getCenterY() + elapsedSeconds * b.getYVelocity()) - difficulty * b.getGravity());
             b.setGravity(b.getGravity() - 0.05);
         }
 
         for (ISliceable b : fruits) {
             b.setCenterX(b.getCenterX() + elapsedSeconds * b.getXVelocity());
-            b.setCenterY((b.getCenterY() + elapsedSeconds * b.getYVelocity()) - zorluk * b.getGravity());
+            b.setCenterY((b.getCenterY() + elapsedSeconds * b.getYVelocity()) - difficulty * b.getGravity());
             b.setGravity(b.getGravity() - 0.02);
         }
     }
@@ -395,15 +399,11 @@ public class Game {
     private void createBalls( double mradius,double mspeed, double initialX, double initialY) {
 
         final Random rng = new Random();
-        double mass = Math.pow((mradius / 40), 3);
         double angle = 2 * PI * rng.nextDouble();
-
 
         int random = rng.nextInt(5);
 
-
         switch (random){
-
             case 0: //apple
                 fruits.add(new Apple(initialX, initialY, mradius, mspeed*cos(angle), -Math.abs(mspeed*sin(angle))));
                 break;
@@ -480,7 +480,6 @@ public class Game {
         semifruits.add(semifruit2);
     }
 
-
     //inner class for frames
     private static class FrameStats {
         private long frameCount ;
@@ -503,7 +502,6 @@ public class Game {
         public String getText() {
             return text.get();
         }
-
         public ReadOnlyStringProperty textProperty() {
             return text.getReadOnlyProperty() ;
         }
@@ -511,8 +509,6 @@ public class Game {
         @Override
         public String toString() {
             return String.format("SCORE: %d, FAIL: %d, Duration: %d Second",score, fail, duration);
-
-            //return String.format("Frame count: %,d Average frame interval: %.3f milliseconds Score: %d, Fail: %d", getFrameCount(), getMeanFrameInterval(), score, fail);
         }
     }
 }

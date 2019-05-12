@@ -15,7 +15,7 @@ public class Lemon extends Fruit {
 
     @Override
     public void slice(double angle) {
-        Game.createHalfFruits(0,  this.getCenterX()+10, this.getCenterY()+10, angle,"file:FruitImages/halfLemon1.png","file:FruitImages/halfLemon2.png");
+        Game.createHalfFruits( this.getCenterX()+10, this.getCenterY()+10, angle,"file:FruitImages/halfLemon1.png","file:FruitImages/halfLemon2.png");
 
     }
 }

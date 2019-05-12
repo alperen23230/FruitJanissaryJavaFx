@@ -287,23 +287,23 @@ public class Game {
     }
 
     public void createBombEffect(double initialX, double initialY, Pane pane){
-        // Define the slash image and create the object for it
+
         ImageView bombEffect = new ImageView("file:FruitImages/bombEffect.gif");
 
         bombEffect.setFitWidth(150);
         bombEffect.setFitHeight(150);
 
-        // Firstly make the slash invisible
+
         bombEffect.setVisible(false);
 
-        // Tie the trace with our full watermelon layout x, y
+
         bombEffect.setLayoutX(initialX);
         bombEffect.setLayoutY(initialY);
 
-        // Add the trace to the pane
+
         pane.getChildren().add(bombEffect);
 
-        // Make animation to show the trace just for 400 millisecond
+
         Timeline showEffect = new Timeline(
                 new KeyFrame(Duration.ZERO, e ->
                 {
@@ -417,65 +417,63 @@ public class Game {
     }
 
     //this is the method for create half fruits
-    public static void createHalfFruits( double mspeed, double initialX, double initialY, double angle1, String pathHalf1, String pathHalf2) {
+    public static void createHalfFruits( double initialX, double initialY, double angle, String pathHalf1, String pathHalf2) {
         final Random rng = new Random();
 
-        final double angle = 2 * PI * rng.nextDouble();
-
-        HalfFruit halfFruit1 = new HalfFruit( mspeed*cos(angle), -Math.abs(mspeed*sin(angle)) );
+        HalfFruit halfFruit1 = new HalfFruit( 40, 0);
         halfFruit1.getView().setImage(new Image(pathHalf1));
         halfFruit1.getView().setFitHeight(50);
         halfFruit1.getView().setFitWidth(25);
 
-        HalfFruit halfFruit2 = new HalfFruit( mspeed*cos(angle), -Math.abs(mspeed*sin(angle)));
+        HalfFruit halfFruit2 = new HalfFruit( -40, 0);
         halfFruit2.getView().setImage(new Image(pathHalf2));
         halfFruit2.getView().setFitHeight(50);
         halfFruit2.getView().setFitWidth(25);
 
         rotateTransitionhalFruit1 = new RotateTransition(Duration.seconds(3),halfFruit1.getView());
-        rotateTransitionhalFruit1.setFromAngle(angle1);
+        rotateTransitionhalFruit1.setFromAngle(angle);
         rotateTransitionhalFruit1.setToAngle(-360);
         rotateTransitionhalFruit1.setAutoReverse(true);
         rotateTransitionhalFruit1.play();
 
         rotateTransitionhalFruit2 = new RotateTransition(Duration.seconds(3),halfFruit2.getView());
-        rotateTransitionhalFruit2.setFromAngle(angle1);
+        rotateTransitionhalFruit2.setFromAngle(angle);
         rotateTransitionhalFruit2.setToAngle(360);
         rotateTransitionhalFruit2.setAutoReverse(true);
         rotateTransitionhalFruit2.play();
 
 
-        if(angle1<90){
+        if(angle<90){
             halfFruit1.getView().setX(initialX-25);
             halfFruit1.getView().setY(initialY-25);
             halfFruit2.getView().setX(initialX);
             halfFruit2.getView().setY(initialY);
-            halfFruit1.getView().setRotate(angle1);
-            halfFruit2.getView().setRotate(angle1);
+            halfFruit1.getView().setRotate(angle);
+            halfFruit2.getView().setRotate(angle);
         }
-        else if(angle1>90 && angle1<180){
+        else if(angle>90 && angle<180){
             halfFruit1.getView().setX(initialX);
             halfFruit1.getView().setY(initialY);
             halfFruit2.getView().setX(initialX+25);
             halfFruit2.getView().setY(initialY-25);
-            halfFruit1.getView().setRotate(angle1-180);
-            halfFruit2.getView().setRotate(angle1-180);
+            halfFruit1.getView().setRotate(angle-180);
+            halfFruit2.getView().setRotate(angle-180);
         }
-        else if(angle1>180 && angle1<270){
+        else if(angle>180 && angle<270){
             halfFruit1.getView().setX(initialX);
             halfFruit1.getView().setY(initialY);
             halfFruit2.getView().setX(initialX+25);
             halfFruit2.getView().setY(initialY+25);
-            halfFruit1.getView().setRotate(angle1-180);
-            halfFruit2.getView().setRotate(angle1-180);
+            halfFruit1.getView().setRotate(angle-180);
+            halfFruit2.getView().setRotate(angle-180);
         }
         else {
             halfFruit1.getView().setX(initialX-25);
             halfFruit1.getView().setY(initialY+25);
             halfFruit2.getView().setX(initialX);
             halfFruit2.getView().setY(initialY);
-            halfFruit1.getView().setRotate(angle1);
-            halfFruit2.getView().setRotate(angle1);
+            halfFruit1.getView().setRotate(angle);
+            halfFruit2.getView().setRotate(angle);
         }
 
         halfFruits.add(halfFruit1);

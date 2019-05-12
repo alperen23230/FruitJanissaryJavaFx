@@ -15,6 +15,6 @@ public class Watermelon extends Fruit {
 
     @Override
     public void slice(double angle) {
-        Game.createHalfFruits(0,  this.getCenterX()+10, this.getCenterY()+10, angle,"file:FruitImages/halfWatermelon2.png","file:FruitImages/halfWatermelon1.png");
+        Game.createHalfFruits(this.getCenterX()+10, this.getCenterY()+10, angle,"file:FruitImages/halfWatermelon2.png","file:FruitImages/halfWatermelon1.png");
     }
 }

@@ -31,6 +31,7 @@ public class EndGameController implements Initializable {
     private Integer score;
     private Integer duration;
     private static String loggedInUsername;
+
     private PreparedStatement preparedStatement;
     private Connection connection;
     private Integer loggedInPlayerId;

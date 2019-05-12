@@ -12,16 +12,15 @@ import java.util.concurrent.Callable;
 import static java.lang.Math.sqrt;
 
 public class HalfFruit {
-    private final DoubleProperty xVelocity ; // pixels per second
+    private final DoubleProperty xVelocity ;
     private final DoubleProperty yVelocity ;
-    private final ReadOnlyDoubleWrapper speed ;
+    private final ReadOnlyDoubleWrapper speed;
     private final ImageView view;
     private final double angle1=0;
     private final double radius=0;
     private double gravity=1;
 
-    public HalfFruit(double centerX, double centerY,
-                     double xVelocity, double yVelocity, double angle1) {
+    public HalfFruit(double xVelocity, double yVelocity) {
 
         this.view =  new ImageView();
         this.xVelocity = new SimpleDoubleProperty(this, "xVelocity", xVelocity);

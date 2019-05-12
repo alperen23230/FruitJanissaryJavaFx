@@ -29,20 +29,14 @@ public class LoginController implements Initializable {
     @FXML
     private PasswordField passwordField;
 
-    Connection connection;
+    private Connection connection;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-    }
-
-    public LoginController(){
         connection = ConnectionUtil.connectionDB();
     }
 
     public void goToRegister(ActionEvent event)throws IOException{
-        System.out.println("Register");
-
         Parent parent = FXMLLoader.load(getClass().getResource("Register.fxml"));
         Scene scene = new Scene(parent);
 
@@ -62,6 +56,7 @@ public class LoginController implements Initializable {
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()){
             String passwordHash = resultSet.getString("HashedPassword");
+
             if(PasswordHash.validatePassword(password,passwordHash)){
 
                 FXMLLoader loader = new FXMLLoader();

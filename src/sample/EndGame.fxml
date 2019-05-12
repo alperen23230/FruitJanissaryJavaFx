@@ -29,5 +29,10 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Label fx:id="highScoreLbl" layoutX="214.0" layoutY="78.0" text="Label">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

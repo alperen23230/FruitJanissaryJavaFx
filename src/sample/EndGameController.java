@@ -25,12 +25,15 @@ public class EndGameController implements Initializable {
     private Label scoreLbl;
     @FXML
     private Label durationLbl;
+    @FXML
+    private Label highScoreLbl;
 
     private Integer score;
     private Integer duration;
     private static String loggedInUsername;
     private PreparedStatement preparedStatement;
-    Connection connection;
+    private Connection connection;
+    private Integer loggedInPlayerId;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -53,6 +56,7 @@ public class EndGameController implements Initializable {
         durationLbl.setText(duration.toString() + " " + "Second");
         try {
             gameDataToDB(loggedInUsername,score,duration);
+            getMyHighScore(loggedInPlayerId);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -60,21 +64,28 @@ public class EndGameController implements Initializable {
 
 
     public void gameDataToDB(String username, Integer score, Integer duration) throws SQLException {
-        Integer loggedInPlayerId = 0;
         String sql = "Select * from player where UserName = ?";
-         preparedStatement = connection.prepareStatement(sql);
+        preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1,username);
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()){
             loggedInPlayerId = resultSet.getInt("Id");
         }
-        System.out.println(loggedInPlayerId);
         String query = "INSERT INTO game (PlayerId, Score, GameDuration) VALUES (?,?,?)";
         preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1,loggedInPlayerId);
         preparedStatement.setInt(2,score);
         preparedStatement.setInt(3,duration);
         preparedStatement.execute();
+    }
+    public void getMyHighScore(Integer playerId) throws SQLException {
+        String sql = "Select Max(Score) from fruitjanissary.game where PlayerId = ?";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, playerId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            highScoreLbl.setText("Your High Score: " + " " + resultSet.getInt(1));
+        }
     }
 
     public void goToMainMenu(ActionEvent event) throws IOException {

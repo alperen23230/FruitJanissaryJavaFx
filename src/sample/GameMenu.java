@@ -30,6 +30,7 @@ public class GameMenu implements Initializable {
         loggedInUsername = username;
         usernameLabel.setText("Welcome to Fruit Janissary " + loggedInUsername);
     }
+
     public void signOutClicked(ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Scene scene = new Scene(parent);
@@ -40,7 +41,6 @@ public class GameMenu implements Initializable {
     }
 
     public void goToGameScene(ActionEvent event) throws IOException {
-
         Parent parent = FXMLLoader.load(getClass().getResource("MainGameScene.fxml"));
         Scene scene = new Scene(parent);
 

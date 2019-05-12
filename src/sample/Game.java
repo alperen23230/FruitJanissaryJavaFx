@@ -2,6 +2,7 @@ package sample;
 
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
+import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
 import javafx.beans.property.LongProperty;
 import javafx.beans.property.ReadOnlyStringProperty;
@@ -10,7 +11,6 @@ import javafx.beans.property.SimpleLongProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -35,7 +35,7 @@ import static java.lang.StrictMath.sin;
 public class Game {
     private ObservableList<ISliceable> fruits = FXCollections.observableArrayList();
     //List that stores sliced fruits
-    private static ObservableList<HalfFruit> semifruits = FXCollections.observableArrayList();
+    private static ObservableList<HalfFruit> halfFruits = FXCollections.observableArrayList();
     public static int score=0 ;
     public static int fail=0;
     private  final double RADIUS = 25 ;
@@ -47,17 +47,20 @@ public class Game {
     private static String loggedInUsername;
     private boolean isStop = false;
 
-    Timer timer;
-    Stage stage1;
-    TimerTask timerTask;
-    AnimationTimer animationTimer;
-    AnimationTimer worldTimer;
+    private Timer timer;
+    private Stage stage1;
+    private TimerTask timerTask;
+    private AnimationTimer animationTimer;
+    private AnimationTimer worldTimer;
+    private static RotateTransition rotateTransitionhalFruit1;
+    private static RotateTransition rotateTransitionhalFruit2;
 
 
     //Create instance of Frame Stats
     private final FrameStats frameStats = new FrameStats() ;
 
     public void gameStart(){
+        //For game duration
         timer = new Timer();
         timerTask = new TimerTask() {
             @Override
@@ -78,6 +81,7 @@ public class Game {
         Pane ballContainer = new Pane();
         ballContainer.getChildren().addAll(pauseButton, exitButton);
 
+        //This Lambda expression for pause the game scene
         pauseButton.addEventHandler(MouseEvent.MOUSE_CLICKED,event -> {
             if(isStop == false){
                 isStop = true;
@@ -92,6 +96,7 @@ public class Game {
             }
         });
 
+        //This Lambda expression for exit the game
         exitButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             gameExit();
         });
@@ -100,29 +105,29 @@ public class Game {
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         ballContainer.setBackground(new Background(myBI));
 
-        //this is our main loop that creates fruits and checks if game is over
+        //this is the main game loop
          animationTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 //creates fruits or bombs every specific time
-                if(frameStats.getFrameCount()%100000000==delay  ) {
+                if(frameStats.getFrameCount()%100000000 == delay  ) {
 
-                    createBalls( RADIUS, SPEED, 150+Math.random()*500, 600);
+                    createFruits( RADIUS, SPEED, 150+Math.random()*500, 600);
 
                     //making game harder
                     if(score<60){delay+=50;}
                     else if(score>=60 && score<120){delay+=40;}
-                    else if(score>=120 && score<180){delay +=30;}
+                    else if(score>=120 && score<220){delay +=30;}
                     else { delay += 20;}
                 }
-                //Removing semiballs
+                //Removing halfFruits
                 for (int i = 0; i < fruits.size(); i++) {
                     if( fruits.get(i).getCenterY()-fruits.get(i).getRadius()>ballContainer.getHeight()+1 || fruits.get(i).getCenterX()-fruits.get(i).getRadius()>ballContainer.getWidth()+1 || (fruits.get(i).getCenterX()+fruits.get(i).getRadius())<0) {
                         if(fruits.get(i) instanceof Fruit){
                             fail++;}
                         fruits.remove(fruits.get(i));
                     }}
-                if(fail>3){
+                if(fail>2){
                     gameOver();
                 }
             }
@@ -131,11 +136,9 @@ public class Game {
         animationTimer.start();
 
         //this is our mouse event that checks if sliceable object is sliced. We used only entry point to slice a fruit.
-        //so blade doesn't have to exit the fruit
         ballContainer.addEventHandler(MouseEvent.MOUSE_DRAGGED,
                 event ->  {
                         for (int i = 0; i < fruits.size(); i++) {
-                            //if(Math.sqrt((Math.abs(event.getX()-balls.get(i).getCenterX())*Math.abs(event.getX()-balls.get(i).getCenterX()))+(Math.abs(event.getY()-balls.get(i).getCenterY())*Math.abs(event.getY()-balls.get(i).getCenterY())))<=balls.get(i).getRadius()) {
                             if((Math.abs(fruits.get(i).getCenterX() - event.getX()) <= fruits.get(i).getRadius()) && (Math.abs(fruits.get(i).getCenterY() - event.getY()) <= fruits.get(i).getRadius())) {
 
                                 if(event.getX()>=fruits.get(i).getCenterX() && event.getY()<=fruits.get(i).getCenterY()) { angle = Math.abs(Math.asin((event.getX()-fruits.get(i).getCenterX())/fruits.get(i).getRadius()))*57.3; }
@@ -143,27 +146,27 @@ public class Game {
                                 else if(event.getX()<=fruits.get(i).getCenterX() && event.getY()>=fruits.get(i).getCenterY() ) {angle= 180+Math.abs(Math.asin((Math.abs(event.getX()-fruits.get(i).getCenterX()))/fruits.get(i).getRadius()))*57.3;}
                                 else { angle= 270+Math.abs(Math.asin((event.getY()-fruits.get(i).getCenterY())/fruits.get(i).getRadius())*57.3); }
 
-                                //increasing score by fruits' scores
+                                //increasing score by fruit's scores
                                 if(fruits.get(i) instanceof Apple){
                                     fruits.get(i).slice(angle);
                                     score+=((Apple) fruits.get(i)).POINT;
-                                    createSlashTrace(fruits.get(i).getCenterX(), fruits.get(i).getCenterY(), angle, ballContainer );
+                                    createSplashEffect(fruits.get(i).getCenterX(), fruits.get(i).getCenterY(), angle, ballContainer, "file:FruitImages/red-splash.png" );
                                 }
                                 else if(fruits.get(i) instanceof Orange){
                                     fruits.get(i).slice(angle);
                                     score+=((Orange) fruits.get(i)).POINT;
-                                    createSlashTrace(fruits.get(i).getCenterX(), fruits.get(i).getCenterY(), angle, ballContainer );
+                                    createSplashEffect(fruits.get(i).getCenterX(), fruits.get(i).getCenterY(), angle, ballContainer,"file:FruitImages/orange-splash.png" );
                                 }
                                 else if(fruits.get(i) instanceof Lemon){
                                     fruits.get(i).slice(angle);
                                     score+=((Lemon) fruits.get(i)).POINT;
-                                    createSlashTrace(fruits.get(i).getCenterX(), fruits.get(i).getCenterY(), angle, ballContainer );
+                                    createSplashEffect(fruits.get(i).getCenterX(), fruits.get(i).getCenterY(), angle, ballContainer ,"file:FruitImages/yellow-splash.png");
                                 }
                                 else if(fruits.get(i) instanceof Watermelon){
                                     //Watermelon
                                     fruits.get(i).slice(angle);
                                     score+=((Watermelon) fruits.get(i)).POINT;
-                                    createSlashTrace(fruits.get(i).getCenterX(), fruits.get(i).getCenterY(), angle, ballContainer );
+                                    createSplashEffect(fruits.get(i).getCenterX(), fruits.get(i).getCenterY(), angle, ballContainer,"file:FruitImages/green-splash.png" );
                                 } else {
                                    gameOverBomb(fruits.get(i).getCenterX(), fruits.get(i).getCenterY(),ballContainer);
                                 }
@@ -172,7 +175,7 @@ public class Game {
                 });
 
 
-        //if a fruit or bomb is created or vanished, it prints or makes it vanished on screen
+        //if a fruit or bomb is created or removed, it prints or makes it remove on screen
         fruits.addListener((ListChangeListener.Change<? extends ISliceable> change) -> {
                 while (change.next()) {
                     for (ISliceable b : change.getAddedSubList()) {
@@ -184,8 +187,8 @@ public class Game {
                 }
         });
 
-        //if a sliced fruit (halffruit) is created or vanished, it prints or makes it vanished on screen
-        semifruits.addListener((ListChangeListener.Change<? extends HalfFruit> change) ->  {
+        //if a halfFruit is created or removed, it prints or makes it removed on screen
+        halfFruits.addListener((ListChangeListener.Change<? extends HalfFruit> change) ->  {
                 while (change.next()) {
                     for (HalfFruit b : change.getAddedSubList()) {
                         ballContainer.getChildren().add(b.getView());
@@ -197,7 +200,7 @@ public class Game {
         });
 
         //creates first fruit
-        createBalls( RADIUS, SPEED, 400, 600);
+        createFruits( RADIUS, SPEED, 400, 600);
 
         BorderPane root = new BorderPane();
         final Label stats = new Label();
@@ -214,6 +217,7 @@ public class Game {
         stage1.show();
         startAnimation(ballContainer);
     }
+    //This method for logged In Username info
     public static void initData(String username){
         loggedInUsername = username;
     }
@@ -237,7 +241,7 @@ public class Game {
     }
 
     public void gameOver(){
-
+        stopGame();
         Parent p = null;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("EndGame.fxml"));
         try {
@@ -255,10 +259,10 @@ public class Game {
         score = 0;
         duration = 0;
         fruits.removeAll();
-        semifruits.removeAll();
-        stopGame();
+        halfFruits.removeAll();
     }
     public void gameExit(){
+        stopGame();
         Parent p = null;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameMenu.fxml"));
         try {
@@ -273,14 +277,15 @@ public class Game {
         score = 0;
         duration = 0;
         fruits.removeAll();
-        semifruits.removeAll();
-        stopGame();
+        halfFruits.removeAll();
     }
 
     public void stopGame(){
         timerTask.cancel();
         animationTimer.stop();
         worldTimer.stop();
+        rotateTransitionhalFruit1.stop();
+        rotateTransitionhalFruit2.stop();
     }
 
     public void createBombEffect(double initialX, double initialY, Pane pane){
@@ -318,46 +323,46 @@ public class Game {
         showEffect.play();
     }
 
-    public void createSlashTrace(double initalX, double initalY, double angle1, Pane pane )
+    public void createSplashEffect(double initalX, double initalY, double angle1, Pane pane, String path)
     {
         // Get angle of incline with +ve X axis
         double angle = angle1;
 
         // Define the slash image and create the object for it
-        ImageView trace = new ImageView("file:FruitImages/slash_trace.gif");
+        ImageView splash = new ImageView(path);
 
         // Set rotate angle we calculated, 45 hard-coded value
-        trace.setRotate(angle+10);
+        splash.setRotate(angle+10);
 
-        trace.setFitWidth(50);
-        trace.setFitHeight(50);
+        splash.setFitWidth(50);
+        splash.setFitHeight(50);
 
         // Firstly make the slash invisible
-        trace.setVisible(false);
+        splash.setVisible(false);
 
         // Tie the trace with our full watermelon layout x, y
-        trace.setLayoutX(initalX);
-        trace.setLayoutY(initalY);
+        splash.setLayoutX(initalX);
+        splash.setLayoutY(initalY);
 
         // Add the trace to the pane
-        pane.getChildren().add(trace);
+        pane.getChildren().add(splash);
 
         // Make animation to show the trace just for 400 millisecond
-        Timeline showSlash = new Timeline(
+        Timeline showSplash = new Timeline(
                 new KeyFrame(Duration.ZERO, e ->
                 {
-                    trace.setVisible(true);
+                    splash.setVisible(true);
                 }
                 ),
                 new KeyFrame(Duration.millis(400), e->
                 {
-                    trace.setVisible(false);
+                    splash.setVisible(false);
                 }
                 )
         );
 
-        showSlash.setCycleCount(1);
-        showSlash.play();
+        showSplash.setCycleCount(1);
+        showSplash.play();
     }
 
     //updates screen
@@ -377,12 +382,12 @@ public class Game {
         worldTimer.start();
     }
 
-    //this is the part where fruits and semifruits move (translate) by gravity
+    //this is the part where fruits and halfFruits move (translate) by gravity
     private void updateWorld(long elapsedTime) {
         double elapsedSeconds = elapsedTime / 1_000_000_000.0;
         double difficulty = 4.6;
 
-        for (HalfFruit b : semifruits) {
+        for (HalfFruit b : halfFruits) {
             b.setCenterX(b.getCenterX() + elapsedSeconds * b.getXVelocity());
             b.setCenterY((b.getCenterY() + elapsedSeconds * b.getYVelocity()) - difficulty * b.getGravity());
             b.setGravity(b.getGravity() - 0.05);
@@ -396,7 +401,7 @@ public class Game {
     }
 
     //this is the method to create fruits
-    private void createBalls( double mradius,double mspeed, double initialX, double initialY) {
+    private void createFruits( double mradius,double mspeed, double initialX, double initialY) {
 
         final Random rng = new Random();
         double angle = 2 * PI * rng.nextDouble();
@@ -410,7 +415,7 @@ public class Game {
             case 1: //lemon
                 fruits.add(new Lemon(initialX, initialY, mradius, mspeed*cos(angle), -Math.abs(mspeed*sin(angle))));
                 break;
-            case 2: //peach
+            case 2: //orange
                 fruits.add(new Orange(initialX, initialY, mradius, mspeed*cos(angle), -Math.abs(mspeed*sin(angle))));
                 break;
             case 3: //watermelon
@@ -424,73 +429,80 @@ public class Game {
         }
     }
 
-    //this is the method to create half fruits
-    public static void createSemiBalls( double mspeed, double initialX, double initialY, double angle1, String path, String path2) {
+    //this is the method for create half fruits
+    public static void createHalfFruits( double mspeed, double initialX, double initialY, double angle1, String path, String path2) {
         final Random rng = new Random();
 
         final double angle = 2 * PI * rng.nextDouble();
 
-        HalfFruit semifruit1 = new HalfFruit(initialX, initialY, mspeed*cos(angle),
+        HalfFruit halfFruit1 = new HalfFruit(initialX, initialY, mspeed*cos(angle),
                 -Math.abs(mspeed*sin(angle)), angle1 );
-        semifruit1.getView().setImage(new Image(path));
-        semifruit1.getView().setFitHeight(50);
-        semifruit1.getView().setFitWidth(25);
+        halfFruit1.getView().setImage(new Image(path));
+        halfFruit1.getView().setFitHeight(50);
+        halfFruit1.getView().setFitWidth(25);
 
-        HalfFruit semifruit2 = new HalfFruit(initialX, initialY, mspeed*cos(angle),
+        HalfFruit halfFruit2 = new HalfFruit(initialX, initialY, mspeed*cos(angle),
                 -Math.abs(mspeed*sin(angle)), angle1 );
-        semifruit2.getView().setImage(new Image(path2));
-        semifruit2.getView().setFitHeight(50);
-        semifruit2.getView().setFitWidth(25);
+        halfFruit2.getView().setImage(new Image(path2));
+        halfFruit2.getView().setFitHeight(50);
+        halfFruit2.getView().setFitWidth(25);
+
+        rotateTransitionhalFruit1 = new RotateTransition(Duration.seconds(3),halfFruit1.getView());
+        rotateTransitionhalFruit1.setFromAngle(angle1);
+        rotateTransitionhalFruit1.setToAngle(-360);
+        rotateTransitionhalFruit1.play();
+
+        rotateTransitionhalFruit2 = new RotateTransition(Duration.seconds(3),halfFruit2.getView());
+        rotateTransitionhalFruit2.setFromAngle(angle1);
+        rotateTransitionhalFruit2.setToAngle(360);
+        rotateTransitionhalFruit2.play();
 
 
         if(angle1<90){
-            semifruit1.getView().setX(initialX-25);
-            semifruit1.getView().setY(initialY-25);
-            semifruit2.getView().setX(initialX);
-            semifruit2.getView().setY(initialY);
-            semifruit1.getView().setRotate(angle1);
-            semifruit2.getView().setRotate(angle1);
+            halfFruit1.getView().setX(initialX-25);
+            halfFruit1.getView().setY(initialY-25);
+            halfFruit2.getView().setX(initialX);
+            halfFruit2.getView().setY(initialY);
+            halfFruit1.getView().setRotate(angle1);
+            halfFruit2.getView().setRotate(angle1);
         }
         else if(angle1>90 && angle1<180){
-            semifruit1.getView().setX(initialX);
-            semifruit1.getView().setY(initialY);
-            semifruit2.getView().setX(initialX+25);
-            semifruit2.getView().setY(initialY-25);
-            semifruit1.getView().setRotate(angle1-180);
-            semifruit2.getView().setRotate(angle1-180);
+            halfFruit1.getView().setX(initialX);
+            halfFruit1.getView().setY(initialY);
+            halfFruit2.getView().setX(initialX+25);
+            halfFruit2.getView().setY(initialY-25);
+            halfFruit1.getView().setRotate(angle1-180);
+            halfFruit2.getView().setRotate(angle1-180);
         }
         else if(angle1>180 && angle1<270){
-            semifruit1.getView().setX(initialX);
-            semifruit1.getView().setY(initialY);
-            semifruit2.getView().setX(initialX+25);
-            semifruit2.getView().setY(initialY+25);
-            semifruit1.getView().setRotate(angle1-180);
-            semifruit2.getView().setRotate(angle1-180);
+            halfFruit1.getView().setX(initialX);
+            halfFruit1.getView().setY(initialY);
+            halfFruit2.getView().setX(initialX+25);
+            halfFruit2.getView().setY(initialY+25);
+            halfFruit1.getView().setRotate(angle1-180);
+            halfFruit2.getView().setRotate(angle1-180);
         }
         else {
-            semifruit1.getView().setX(initialX-25);
-            semifruit1.getView().setY(initialY+25);
-            semifruit2.getView().setX(initialX);
-            semifruit2.getView().setY(initialY);
-            semifruit1.getView().setRotate(angle1);
-            semifruit2.getView().setRotate(angle1);
+            halfFruit1.getView().setX(initialX-25);
+            halfFruit1.getView().setY(initialY+25);
+            halfFruit2.getView().setX(initialX);
+            halfFruit2.getView().setY(initialY);
+            halfFruit1.getView().setRotate(angle1);
+            halfFruit2.getView().setRotate(angle1);
         }
 
-        semifruits.add(semifruit1);
-        semifruits.add(semifruit2);
+        halfFruits.add(halfFruit1);
+        halfFruits.add(halfFruit2);
     }
 
-    //inner class for frames
+
     private static class FrameStats {
         private long frameCount ;
-        private double meanFrameInterval ; // millis
+        private double meanFrameInterval ;
         private final ReadOnlyStringWrapper text = new ReadOnlyStringWrapper(this, "text", "Frame count: 0 Average frame interval: N/A");
 
         public long getFrameCount() {
             return frameCount;
-        }
-        public double getMeanFrameInterval() {
-            return meanFrameInterval;
         }
 
         public void addFrame(long frameDurationNanos) {
@@ -499,9 +511,6 @@ public class Game {
             text.set(toString());
         }
 
-        public String getText() {
-            return text.get();
-        }
         public ReadOnlyStringProperty textProperty() {
             return text.getReadOnlyProperty() ;
         }

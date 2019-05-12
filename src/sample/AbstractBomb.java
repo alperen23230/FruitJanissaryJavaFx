@@ -5,25 +5,28 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.beans.property.ReadOnlyDoubleWrapper;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
 
 import java.util.concurrent.Callable;
 
 import static java.lang.Math.sqrt;
 
-public class HalfFruit {
+public abstract class AbstractBomb implements ISliceable {
     private final DoubleProperty xVelocity ; // pixels per second
     private final DoubleProperty yVelocity ;
     private final ReadOnlyDoubleWrapper speed ;
-    private final ImageView view;
-    private final double angle1=0;
-    private final double radius=0;
+    private final double radius; // pixels
     private double gravity=1;
+    private final Circle view;
 
-    public HalfFruit(double centerX, double centerY,
-                     double xVelocity, double yVelocity, double angle1) {
 
-        this.view =  new ImageView();
+    public AbstractBomb(double centerX, double centerY, double radius,
+                double xVelocity, double yVelocity) {
+
+        this.view = new Circle(centerX, centerY, radius);
         this.xVelocity = new SimpleDoubleProperty(this, "xVelocity", xVelocity);
         this.yVelocity = new SimpleDoubleProperty(this, "yVelocity", yVelocity);
         this.speed = new ReadOnlyDoubleWrapper(this, "speed");
@@ -36,10 +39,15 @@ public class HalfFruit {
                 return sqrt(xVel * xVel + yVel * yVel);
             }
         }, this.xVelocity, this.yVelocity));
+        this.radius = radius;
+        view.setRadius(radius);
+        getView().setFill(new ImagePattern(new Image("file:FruitImages/bomb.png")));
+
     }
 
-    public double getAngle1() {
-        return angle1;
+    @Override
+    public void slice(double angle) {
+        System.out.println("You hit bomb!");
     }
 
     public double getGravity() {
@@ -87,23 +95,30 @@ public class HalfFruit {
     }
 
     public final double getCenterX() {
-        return view.getX();
+        return view.getCenterX();
     }
 
     public final void setCenterX(double centerX) {
-        view.setX(centerX);
+        view.setCenterX(centerX);
+    }
+
+    public final DoubleProperty centerXProperty() {
+        return view.centerXProperty();
     }
 
     public final double getCenterY() {
-        return view.getY();
+        return view.getCenterY();
     }
 
     public final void setCenterY(double centerY) {
-        view.setY(centerY);
+        view.setCenterY(centerY);
     }
 
+    public final DoubleProperty centerYProperty() {
+        return view.centerYProperty();
+    }
 
-    public ImageView getView() {
+    public Shape getView() {
         return view;
     }
 }

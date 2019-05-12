@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionUtil {
+    //This function returns our connection
     public static Connection connectionDB(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

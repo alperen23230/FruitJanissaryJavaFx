@@ -39,18 +39,16 @@ public class RegisterController implements Initializable {
     private PasswordField passwordField;
     @FXML
     private PasswordField confirmPassField;
-    Connection connection;
-    Alert alert;
+    private Connection connection;
+    private Alert alert;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-    }
-
-    public RegisterController(){
+        //For DB Connection
         connection = ConnectionUtil.connectionDB();
     }
+
 
     public void registerClicked(ActionEvent event) throws InvalidKeySpecException, NoSuchAlgorithmException, IOException, SQLException {
         String name = nameField.getText();
@@ -66,7 +64,7 @@ public class RegisterController implements Initializable {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
 
-        //For is username checker
+        //For is username unique checker
         String sql = "Select * from player where UserName = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1,username);
@@ -75,7 +73,6 @@ public class RegisterController implements Initializable {
         while (resultSet.next()){
             isUsernameUnique = false;
         }
-
 
         if(name.isEmpty() || surname.isEmpty() || username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPass.isEmpty() ){
             alert = new Alert(Alert.AlertType.ERROR);
@@ -93,8 +90,12 @@ public class RegisterController implements Initializable {
                 alert.show();
 
             }else if (matcher.matches()){
+                //we have created hash, using generateStrongPasswordHash
                 String hashedPassword = PasswordHash.generateStrongPasswordHash(password);
+                //if user info is validate, we sent the information to the database
                 register(name,surname,username,email,hashedPassword);
+
+                //After redirect to Login Scene
                 Parent parent = FXMLLoader.load(getClass().getResource("sample.fxml"));
                 Scene scene = new Scene(parent);
 

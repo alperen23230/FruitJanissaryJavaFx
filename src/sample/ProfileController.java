@@ -78,7 +78,7 @@ public class ProfileController implements Initializable {
         while (resultSet.next()){
             loggedInPlayerId = resultSet.getInt("Id");
         }
-        String query = "Select P.UserName, P.Name,P.Surname,G.Score,G.GameDuration,G.DateOfPlay from game G, player P where P.Id = G.PlayerId and G.PlayerId = ? ";
+        String query = "Select P.UserName, P.Name,P.Surname,G.Score,G.GameDuration,G.DateOfPlay from game G, player P where P.Id = G.PlayerId and G.PlayerId = ? order by G.DateOfPlay desc";
         preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1, loggedInPlayerId);
         ResultSet rs = preparedStatement.executeQuery();
